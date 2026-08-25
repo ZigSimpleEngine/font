@@ -232,7 +232,7 @@ fn lookupFormat6(subtable_bytes: []const u8, codepoint: u21) u16 {
 fn lookupFormat12(subtable_bytes: []const u8, codepoint: u21) u16 {
     if (subtable_bytes.len < 32) return 0;
     const group_count = read_module.bigEndianUInt32At(subtable_bytes, 12) catch return 0;
-    const groups_offset: usize = 32;
+    const groups_offset: usize = 16;
     const codepoint_value: u32 = codepoint;
     var low_index: u32 = 0;
     var high_index: u32 = group_count;
