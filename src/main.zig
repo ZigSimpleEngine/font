@@ -121,8 +121,8 @@ fn run(
         if (coverage_value > 127) lit_pixel_count += 1;
     }
 
-    const bmp_output_path = try std.fmt.allocPrint(arena_allocator, "{s}.bmp", .{output_file_prefix});
-    const pgm_output_path = try std.fmt.allocPrint(arena_allocator, "{s}.pgm", .{output_file_prefix});
+    const bmp_output_path = try arena_allocator.print("{s}.bmp", .{output_file_prefix});
+    const pgm_output_path = try arena_allocator.print("{s}.pgm", .{output_file_prefix});
 
     try writeBmpFile(io, arena_allocator, bmp_output_path, &bitmap);
     try writePgmFile(io, arena_allocator, pgm_output_path, &bitmap);
